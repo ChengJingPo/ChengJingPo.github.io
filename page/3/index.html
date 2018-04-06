@@ -669,7 +669,27 @@
       
         
           
-            
+            <p>kvo 的探究<br>kvo :<br>1.添加观察者。 addObserver:forKeyPath: options: contex:<br>    (1)即对象（就是该方法observerValueForKeyPath: ofObjectChange: context: 写在哪个类的方法里）<br>    （3）options : NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld<br>    （4）context:可以作为标志符（用于对对象的多个属性添加观察者时做区分）<br>2.监听<br>3.删除观察者（注：一般情况下在dealloc中释放观察者对象）</p>
+<p>设置属性值<br>（1）key<br>（2）keyPath<br>KVC :<br>设置属性值</p>
+<ul>
+<li>(void)setValue:(id)value forKey:(NSString*)key;<br>访问属性值</li>
+<li>(id)valueForKey:(NSString*)key;<br>“KVC在执行KVC方法时，会优先判断是否有对应的setter,getter方法“</li>
+</ul>
+<p>kvo发送通知的时机<br> （1）使用setter方法<br> （2）使用KVC的setValue<br>  (3)手动控制发送通知（手动触发kvo前需要先关闭自动发送通知）—-模拟系统的自动发送通知，需要重写setter方法</p>
+<p>kvo原理分析<br>核心：当一个类有观察者时，会生成一个中间类，并且会把该类的isa指向中间类</p>
+<p>原理：<br>1.当一个object有观察者时，动态创建该object的类的子类；<br>2.对于每个被观察的property,重写其setter方法；<br>3.在重写的setter方法中，调用- willChangeValueForkey: 和 - didChangeValueForKey: ;</p>
+<p>查看类的变化状态：<br>1.方法列表，属性列表，变量列表；<br>2.类名class，isa,object-getclass<br>3.setter方法的IMP，class的IMP<br>《重写了setter方法，class方法》</p>
+<p>手动调用kvo</p>
+<p>-(void)willChangeValueForKey:   //属性值将要变化<br>-(void)didChangeValueForKey:    //属性值已经改变<br>+(BOOL)autoMaticallyNotifiesObserversForKey: //给系统自动发送通知操作加一个开关，通过key ,判断哪些允许自动发送通知，哪些不允许</p>
+<p>（1）手动触发KVO前，需要先关闭系统的自动发送通知；<br>（2）模拟系统的自动发送通知，需要重写setter方法；<br>（3）发送2个通知，需要嵌套：willChange 和 didChange<br>（4）模拟系统KVO的实现：<br>     a.添加通知：cf_ddObserver…<br>     b.监听通知：cf_observerValueForKey..<br>     c.删除通知：cf_removeObserver…</p>
+<pre><code>重写该3个方法，关键工作：
+1）注册类，集成self
+2）修改isa
+3)重写setter方法
+4）重写class方法
+5）通知外界工作
+</code></pre><p> 核心：<br> （1）修改isa;<br> (2)添加修改后的setter方法<br> （3）添加修改后的class方法<br> （4）通知外界</p>
+
           
         
       
@@ -850,7 +870,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -859,7 +879,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -914,7 +934,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
