@@ -2,16 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2018/05/17/runtime%E7%9A%84%E4%BA%86%E8%A7%A3/</loc>
+    <loc>http://yoursite.com/2018/10/17/%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81/</loc>
     
-    <lastmod>2018-10-17T05:48:01.298Z</lastmod>
+    <lastmod>2018-10-17T09:02:05.694Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/about/index.html</loc>
+    
+    <lastmod>2018-10-17T08:59:35.154Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/10/17/about/</loc>
+    
+    <lastmod>2018-10-17T08:58:04.030Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/tags/index.html</loc>
+    
+    <lastmod>2018-10-17T08:45:28.217Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/categories/index.html</loc>
+    
+    <lastmod>2018-10-17T08:45:23.379Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/10/17/%E7%BB%84%E4%BB%B6%E5%8C%96%E4%BA%86%E8%A7%A3/</loc>
+    
+    <lastmod>2018-10-17T08:36:33.656Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2018/03/16/kvo%E7%9A%84%E4%BA%86%E8%A7%A3/</loc>
     
-    <lastmod>2018-10-17T05:36:46.673Z</lastmod>
+    <lastmod>2018-10-17T08:29:16.993Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/05/17/runtime%E7%9A%84%E4%BA%86%E8%A7%A3/</loc>
+    
+    <lastmod>2018-10-17T08:28:43.840Z</lastmod>
     
   </url>
   
