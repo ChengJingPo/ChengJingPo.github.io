@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-10-17T04:40:02.389Z</updated>
+  <updated>2018-10-17T04:40:26.398Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,29 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title></title>
-    <link href="http://yoursite.com/2018/10/17/kvo%E7%9A%84%E4%BA%86%E8%A7%A3/"/>
-    <id>http://yoursite.com/2018/10/17/kvo的了解/</id>
-    <published>2018-10-17T04:34:24.315Z</published>
-    <updated>2018-10-17T04:40:02.389Z</updated>
-    
-    <content type="html"><![CDATA[<hr><p>title:kvo的了解<br>date:2018-03-16 12:34:24</p><h2 id="tags-iOS底层"><a href="#tags-iOS底层" class="headerlink" title="tags:iOS底层"></a>tags:iOS底层</h2>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;hr&gt;
-&lt;p&gt;title:kvo的了解&lt;br&gt;date:2018-03-16 12:34:24&lt;/p&gt;
-&lt;h2 id=&quot;tags-iOS底层&quot;&gt;&lt;a href=&quot;#tags-iOS底层&quot; class=&quot;headerlink&quot; title=&quot;tags:iOS底层&quot;&gt;&lt;/a&gt;tag
-      
-    
-    </summary>
-    
-    
-  </entry>
   
   <entry>
     <title></title>
@@ -73,6 +50,22 @@
     
     </summary>
     
+    
+  </entry>
+  
+  <entry>
+    <title>kvo的了解</title>
+    <link href="http://yoursite.com/2018/03/16/kvo%E7%9A%84%E4%BA%86%E8%A7%A3-1/"/>
+    <id>http://yoursite.com/2018/03/16/kvo的了解-1/</id>
+    <published>2018-03-16T05:04:41.000Z</published>
+    <updated>2018-10-17T05:05:29.397Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+      <category term="iOS底层" scheme="http://yoursite.com/tags/iOS%E5%BA%95%E5%B1%82/"/>
     
   </entry>
   
