@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-10-17T03:42:01.170Z</updated>
+  <updated>2018-10-17T04:26:07.181Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,25 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>好久没有更新2了</title>
-    <link href="http://yoursite.com/2018/10/17/%E5%A5%BD%E4%B9%85%E6%B2%A1%E6%9C%89%E6%9B%B4%E6%96%B02%E4%BA%86/"/>
-    <id>http://yoursite.com/2018/10/17/好久没有更新2了/</id>
-    <published>2018-10-17T03:42:01.000Z</published>
-    <updated>2018-10-17T03:42:01.170Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>好久没有更新了</title>
-    <link href="http://yoursite.com/2018/10/17/%E5%A5%BD%E4%B9%85%E6%B2%A1%E6%9C%89%E6%9B%B4%E6%96%B0%E4%BA%86/"/>
-    <id>http://yoursite.com/2018/10/17/好久没有更新了/</id>
-    <published>2018-10-17T03:09:55.000Z</published>
-    <updated>2018-10-17T03:09:55.759Z</updated>
+    <link href="http://yoursite.com/2018/05/17/%E5%A5%BD%E4%B9%85%E6%B2%A1%E6%9C%89%E6%9B%B4%E6%96%B0%E4%BA%86/"/>
+    <id>http://yoursite.com/2018/05/17/好久没有更新了/</id>
+    <published>2018-05-17T03:09:55.000Z</published>
+    <updated>2018-10-17T04:26:07.181Z</updated>
     
     <summary type="html">
     
@@ -45,16 +31,32 @@
   </entry>
   
   <entry>
-    <title>text</title>
-    <link href="http://yoursite.com/2018/05/17/text/"/>
-    <id>http://yoursite.com/2018/05/17/text/</id>
-    <published>2018-05-17T04:16:36.000Z</published>
-    <updated>2018-10-17T04:22:42.509Z</updated>
+    <title>好久没有更新2了</title>
+    <link href="http://yoursite.com/2018/04/17/%E5%A5%BD%E4%B9%85%E6%B2%A1%E6%9C%89%E6%9B%B4%E6%96%B02%E4%BA%86/"/>
+    <id>http://yoursite.com/2018/04/17/好久没有更新2了/</id>
+    <published>2018-04-17T03:42:01.000Z</published>
+    <updated>2018-10-17T04:25:51.186Z</updated>
     
     <summary type="html">
     
     </summary>
     
+    
+  </entry>
+  
+  <entry>
+    <title>iOS分类的了解</title>
+    <link href="http://yoursite.com/2018/03/15/text/"/>
+    <id>http://yoursite.com/2018/03/15/text/</id>
+    <published>2018-03-15T04:16:36.000Z</published>
+    <updated>2018-10-17T04:25:27.771Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+      <category term="iOS底层" scheme="http://yoursite.com/tags/iOS%E5%BA%95%E5%B1%82/"/>
     
   </entry>
   
