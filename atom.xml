@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-02-17T14:27:18.283Z</updated>
+  <updated>2019-02-18T10:08:36.229Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>github上通过Cocoapods构建属于自己的库</title>
+    <link href="http://yoursite.com/2019/02/18/github%E4%B8%8A%E9%80%9A%E8%BF%87Cocoapods%E6%9E%84%E5%BB%BA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E5%BA%93/"/>
+    <id>http://yoursite.com/2019/02/18/github上通过Cocoapods构建属于自己的库/</id>
+    <published>2019-02-18T10:08:00.000Z</published>
+    <updated>2019-02-18T10:08:36.229Z</updated>
+    
+    <content type="html"><![CDATA[<p>1.进入目标文件，即cd 到目标文件夹，通过命令pod lib create 库名 创建库<br><img src="http://pn44hg1cy.bkt.clouddn.com/Snip20190218_25.png" alt="Snip20190218_25"></p><p>2.通过命令：git remote add origin <a href="https://github.com/xxxx/xxxx" target="_blank" rel="external">https://github.com/xxxx/xxxx</a> 和远程库进行连接<br><img src="http://pn44hg1cy.bkt.clouddn.com/Snip20190218_26.png" alt="Snip20190218_26"><br>3.<br>  3.1通过命令:git status  查看状态<img src="http://pn44hg1cy.bkt.clouddn.com/Snip20190218_27.png" alt="Snip20190218_27"></p><p>  3.2通过命令:git add .   添加变化<br>  <img src="http://pn44hg1cy.bkt.clouddn.com/Snip20190218_28.png" alt="Snip20190218_28"><br>  3.3通过命令:git commit -m ‘first commit’  提交记录<img src="http://pn44hg1cy.bkt.clouddn.com/Snip20190218_29.png" alt="Snip20190218_29"></p><p>  3.4通过命令:git push -u origin master     推送到远程<img src="http://pn44hg1cy.bkt.clouddn.com/Snip20190218_30.png" alt="Snip20190218_30"></p><p>4.打标签<br>  4.1通过命令:git tag  先查看下已有标签<br>  4.2通过命令:git tag ‘0.x.x’  进行本地打标签<br>  4.3通过命令:git push –tags  已打的标签同步提交到远程库<br>  <img src="http://pn44hg1cy.bkt.clouddn.com/Snip20190218_31.png" alt="Snip20190218_31"></p><p>5.修改.podspec文件参数<br>   修改完后保存下，再进行步骤3操作的<br>   <img src="http://pn44hg1cy.bkt.clouddn.com/Snip20190218_32.png" alt="Snip20190218_32"></p><p>6.提交到远程库<br>  6.1通过命令:pod lib lint 进行本地验证<img src="http://pn44hg1cy.bkt.clouddn.com/Snip20190218_23.png" alt="Snip20190218_23"></p><p>  6.2通过命令:pod spec lint 进行远程验证<img src="http://pn44hg1cy.bkt.clouddn.com/Snip20190218_22.png" alt="Snip20190218_22"></p><p>  6.3通过命令:pod trunk push xxxx.podspec 进行远程提交!<br><img src="http://pn44hg1cy.bkt.clouddn.com/Snip20190218_14.png" alt="Snip20190218_14"></p><p>7.库查询验证<br>  通过命令：pod search xxxx.podspec 进行查询<br>  <img src="http://pn44hg1cy.bkt.clouddn.com/Snip20190218_21.png" alt="Snip20190218_21"><br><img src="http://pn44hg1cy.bkt.clouddn.com/Snip20190218_16.png" alt="Snip20190218_16"> 之后您可以您就可以像使用AFN一样在工程中使用您的库了。</p><p>##附：<br>在第一次向远程提交（即：git push -u origin master）时遇到以下问题：<br><img src="http://pn44hg1cy.bkt.clouddn.com/Snip20190218_33.png" alt="Snip20190218_33"><br>1）解决方案：<br>（1）通过：git status 查看状态<br><img src="http://pn44hg1cy.bkt.clouddn.com/Snip20190218_35.png" alt="Snip20190218_35"><br>（2）通过：git mergetool 进行合并<br><img src="http://pn44hg1cy.bkt.clouddn.com/Snip20190218_36.png" alt="Snip20190218_36"><br>（3）合并后再提交就OK了，具体看下3.4。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;1.进入目标文件，即cd 到目标文件夹，通过命令pod lib create 库名 创建库&lt;br&gt;&lt;img src=&quot;http://pn44hg1cy.bkt.clouddn.com/Snip20190218_25.png&quot; alt=&quot;Snip20190218_25&quot;&gt;&lt;/
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>设计模式认知</title>
@@ -293,20 +314,6 @@
     
     
       <category term="iOS源码分析" scheme="http://yoursite.com/tags/iOS%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>好久没有更新2了</title>
-    <link href="http://yoursite.com/2018/04/17/%E5%A5%BD%E4%B9%85%E6%B2%A1%E6%9C%89%E6%9B%B4%E6%96%B02%E4%BA%86/"/>
-    <id>http://yoursite.com/2018/04/17/好久没有更新2了/</id>
-    <published>2018-04-17T03:42:01.000Z</published>
-    <updated>2018-10-17T04:25:51.186Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
     
   </entry>
   
