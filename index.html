@@ -702,6 +702,169 @@ return nil;
             
               
                 
+                <a class="post-title-link" href="/2019/02/19/Flutter开发环境的搭建/" itemprop="url">
+                  Flutter开发环境的搭建
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2019-02-19T10:57:37+08:00" content="2019-02-19">
+              2019-02-19
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2019/02/19/Flutter开发环境的搭建/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/02/19/Flutter开发环境的搭建/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p> Flutter是谷歌的移动UI框架，可以快速在iOS和Android上构建高质量的原生用户界面。 Flutter可以与现有的代码一起工作。在全世界，Flutter正在被越来越多的开发者和组织使用，并且Flutter是完全免费、开源的。 –来源于百度百科</p>
+</blockquote>
+<h4 id="今天开始接触下当下最热的技术：Flutter-先从基本的开发环境的搭建开始："><a href="#今天开始接触下当下最热的技术：Flutter-先从基本的开发环境的搭建开始：" class="headerlink" title="今天开始接触下当下最热的技术：Flutter ,先从基本的开发环境的搭建开始："></a>今天开始接触下当下最热的技术：Flutter ,先从基本的开发环境的搭建开始：</h4><ul>
+<li><p>步骤一：设置Flutter镜像</p>
+<p>此步骤需要先通过如下命令打开.bash_profile 文件</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">open .bash_profile</div></pre></td></tr></table></figure>
+<p>并添加如下配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">export PUB_HOSTED_URL=https://pub.flutter-io.cn</div><div class="line">export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn</div></pre></td></tr></table></figure>
+<p>然后Command+S 保存起来，再通过如下命令更新.bash_profile文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">source .bash_profile</div></pre></td></tr></table></figure>
+<p>（⚠️此镜像是Flutter官方为中国开发者搭建的临时镜像，并不保证一直可使用，但可以通过<a href="https://flutter.dev/community/china" target="_blank" rel="external">Using Flutter in China </a>获取镜像的最新信息）</p>
+<ul>
+<li><p>步骤二：安装Flutter SDK </p>
+<ol>
+<li>首先到<a href="https://flutter.dev/docs/development/tools/sdk/releases?tab=macos" target="_blank" rel="external">Flutter官网</a>下载SDK<br><img src="media/15556472917116/Snip20190219_8.png" alt="Snip20190219_8"><br>（我这里下载的是稳定版本，建议下载稳定版本）</li>
+<li><p>下载好SDK后，通过命令解压到想安装到目录，如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ cd /Users/cjq/Documents/flutter</div><div class="line">$ unzip ~/Downloads/flutter_macos_v1.2.1-stable.zip</div></pre></td></tr></table></figure>
+<p>或者手动解压到您想要安装到目录</p>
+</li>
+<li><p>继续配置.bash_profile文件（即添加flutter相关工具的路径）<br>需要配置的路径如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"> export PATH=&quot;/Users/cjq/Documents/flutter/bin:$PATH&quot;</div><div class="line">（注：此路径/Users/cjq/Documents/flutter --您安装flutter的路径)</div></pre></td></tr></table></figure>
+<p>（ 操作.bash_profile文件同步骤一一样）</p>
+</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li><p>步骤三：iOS开发环境设置</p>
+<ol>
+<li><p>安装Xcode<br>由于Flutter开发要求Xcode版本要求是9.0或者更高版本，所以首先要检查下xcode版本，如果不符合或者没有安装Xcode ,请到Aplle开发者网站下载，已符合版本要求，跳过第一步；</p>
+</li>
+<li><p>配置Xcode命令行工具以使用新安装的Xcode版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer</div></pre></td></tr></table></figure>
+<p><img src="media/15556472917116/15556506231348.jpg" alt=""><br>注：以上路径是对于最新版的Xcode的路径（或只安装了一个Xcode） ，若您需要使用不同版本的Xcode版本，需要指定相应路径</p>
+</li>
+<li><p>同意Xcode许可协议，通过打开一次Xcode或者通过命令实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo xcodebuild -license</div></pre></td></tr></table></figure>
+<p><img src="media/15556472917116/15556513514573.jpg" alt=""></p>
+</li>
+<li><p>打开iOS模拟器（即准备在iOS模拟器上运行并测试自己写的Flutter应用）<br>通过命令行打开模拟器：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ open -a Simulator</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li><p>步骤四：测试–创建并运行一个Flutter项目 </p>
+<ol>
+<li><p>通过命令创建一个Flutter项目</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ flutter create my_app</div></pre></td></tr></table></figure>
+<p><img src="media/15556472917116/15556530469490.jpg" alt=""></p>
+</li>
+<li><p>运行完上面的命令后，会在当前目录下创建一个名为my_app 的项目，通过以下命令运行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ cd my_app</div><div class="line">$ flutter run</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><img src="media/15556472917116/15556534223348.jpg" alt=""><br>运行结果：<br><img src="media/15556472917116/15556534811616.jpg" alt=""></p>
+</li>
+<li></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2019/02/18/github上通过Cocoapods构建属于自己的库/" itemprop="url">
                   github上通过Cocoapods构建属于自己的库
                 </a>
@@ -1392,106 +1555,6 @@ return nil;
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2019/01/26/126/" itemprop="url">
-                  126
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2019-01-26T23:59:48+08:00" content="2019-01-26">
-              2019-01-26
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2019/01/26/126/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/01/26/126/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1537,7 +1600,7 @@ return nil;
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-count">26</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1609,7 +1672,7 @@ return nil;
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

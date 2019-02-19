@@ -261,6 +261,106 @@
             
               
                 
+                <a class="post-title-link" href="/2019/01/26/126/" itemprop="url">
+                  126
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2019-01-26T23:59:48+08:00" content="2019-01-26">
+              2019-01-26
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2019/01/26/126/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/01/26/126/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2019/01/24/1124/" itemprop="url">
                   1124
                 </a>
@@ -1162,126 +1262,19 @@
 </ul>
 <h3 id="3）demo："><a href="#3）demo：" class="headerlink" title="3）demo："></a>3）demo：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">#include &lt;iostream&gt;</div><div class="line">using namespace std;</div><div class="line"></div><div class="line"></div><div class="line">int max(int a1,int a2);</div><div class="line">int max(int a1,int a2,int a3);</div><div class="line">int max(float a1,float a2);</div><div class="line">int max(int a3,int a2,int a1 );</div><div class="line"></div><div class="line"></div><div class="line">int main(int argc, const char * argv[]) &#123;</div><div class="line">   </div><div class="line">    cout &lt;&lt; &quot;max(3,5) is &quot; &lt;&lt; max(3,5) &lt;&lt; endl;</div><div class="line">    cout &lt;&lt; &quot;max(3,5,4) is&quot; &lt;&lt; max(3,5,4) &lt;&lt; endl;</div><div class="line">    cout &lt;&lt; &quot;max(3.2,5.2) is &quot; &lt;&lt; max(3.2,5.2) &lt;&lt; endl;</div><div class="line">   </div><div class="line">    return 0;</div><div class="line">    </div><div class="line">&#125;</div><div class="line">int max(int a1,int a2) &#123;</div><div class="line">    return a1 &gt; a2 ? a1 : a2;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int max(int a1,int a2,int a3) &#123;</div><div class="line">    </div><div class="line">    int tmp;</div><div class="line">    if(a1 &gt; a2) tmp = a1;else tmp = a2;</div><div class="line">    if (a3 &gt; tmp)  tmp = a3;</div><div class="line">    </div><div class="line">    return temp;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int max(float a1,float a2) &#123;</div><div class="line">    return a1 &gt; a2 ? a1 :a2;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>执行结果：<br>max(3,5) is 5<br>max(3,5,4) is5<br>max(3.2,5.2) is 5.2</p>
+<h2 id="知识点二：关键字–extern"><a href="#知识点二：关键字–extern" class="headerlink" title="知识点二：关键字–extern"></a>知识点二：关键字–extern</h2><h3 id="1-基本解释："><a href="#1-基本解释：" class="headerlink" title="1)基本解释："></a>1)基本解释：</h3><ul>
+<li>extern是计算机语言中的一个关键字，可置于变量或者函数前，以表示变量或者函数的定义在别的文件中。提示编译器遇到此变量或函数时，在其它模块中寻找其定义，另外，extern也可用来进行链接指定。—-来源百度百科</li>
+<li><p>从extern的作用理解：</p>
+<ul>
+<li>（1）当extern与”C”一起连用时，如: extern “C” void fun(int a, int b);则告诉编译器在编译fun这个函数名时按着C的规则去翻译相应的函数名而不是C++的，C++的规则在翻译这个函数名时会把fun这个名字变得面目全非，可能是fun@aBc_int_int#%$也可能是别的，，因为C++支持函数的重载。</li>
+<li><p>（2）当extern不与“C”连用，在修饰变量或函数时它的作用就是声明函数或全局变量的作用范围–即：可以在已经声明的模块中进行引用（它只是一个声明不是定义，声明只是说明该变量或函数如何使用，并无其他，比如声明的变量并不分配内存空间）。</p>
+<p>V<br>vvv<br>vV</p>
+</li>
+</ul>
+</li>
+</ul>
+<p># </p>
 
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/10/17/表单验证/" itemprop="url">
-                  表单验证
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-10-17T16:48:03+08:00" content="2018-10-17">
-              2018-10-17
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/web前端/" itemprop="url" rel="index">
-                    <span itemprop="name">web前端</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2018/10/17/表单验证/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/10/17/表单验证/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
           
         
       
@@ -1354,7 +1347,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-count">26</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1426,7 +1419,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
