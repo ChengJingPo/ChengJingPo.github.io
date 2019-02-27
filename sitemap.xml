@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2019/01/07/123/</loc>
+    
+    <lastmod>2019-02-27T05:54:11.964Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2019/02/18/github%E4%B8%8A%E9%80%9A%E8%BF%87Cocoapods%E6%9E%84%E5%BB%BA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E5%BA%93/</loc>
     
     <lastmod>2019-02-19T01:13:48.359Z</lastmod>
@@ -89,13 +96,6 @@
     <loc>http://yoursite.com/2019/01/10/134590/</loc>
     
     <lastmod>2019-01-10T06:09:04.009Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2019/01/07/123/</loc>
-    
-    <lastmod>2019-01-06T18:07:07.889Z</lastmod>
     
   </url>
   

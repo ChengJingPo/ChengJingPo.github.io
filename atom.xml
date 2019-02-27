@@ -234,13 +234,20 @@
   </entry>
   
   <entry>
-    <title>123</title>
+    <title>git在使用过程中遇到的问题收集</title>
     <link href="http://yoursite.com/2019/01/07/123/"/>
     <id>http://yoursite.com/2019/01/07/123/</id>
     <published>2019-01-06T18:02:45.000Z</published>
-    <updated>2019-01-06T18:07:07.889Z</updated>
+    <updated>2019-02-27T05:54:11.964Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1-在使用命令：git-push-u-origin-master-时遇到如下问题："><a href="#1-在使用命令：git-push-u-origin-master-时遇到如下问题：" class="headerlink" title="1.在使用命令：git push -u origin master 时遇到如下问题："></a>1.在使用命令：git push -u origin master 时遇到如下问题：</h2><p><img src="http://pn44hg1cy.bkt.clouddn.com/15512461032954.jpg" alt=""><br>查询资料，需使用命令：git remote add origin git@github.com:自己github名字/项目名字.git ，直接通过，再次推送（git push -u origin master）时，遇到新的问题：<br><img src="http://pn44hg1cy.bkt.clouddn.com/15512465068413.jpg" alt=""><br>该问题提示在推送前需要先进行拉取，通过命令 ：git pull origin master –allow-unrelated-histories 进行拉取后再进行推送，推送成功。<br><img src="http://pn44hg1cy.bkt.clouddn.com/15512467618299.jpg" alt=""></p>]]></content>
     
     <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;1-在使用命令：git-push-u-origin-master-时遇到如下问题：&quot;&gt;&lt;a href=&quot;#1-在使用命令：git-push-u-origin-master-时遇到如下问题：&quot; class=&quot;headerlink&quot; title=&quot;1.在使用命令：gi
+      
     
     </summary>
     
