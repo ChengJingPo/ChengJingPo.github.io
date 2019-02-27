@@ -235,12 +235,12 @@
   
   <entry>
     <title>git在使用过程中遇到的问题收集</title>
-    <link href="http://yoursite.com/2019/01/07/123/"/>
-    <id>http://yoursite.com/2019/01/07/123/</id>
+    <link href="http://yoursite.com/2019/01/07/git%E5%9C%A8%E4%BD%BF%E7%94%A8%E8%BF%87%E7%A8%8B%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E6%94%B6%E9%9B%86/"/>
+    <id>http://yoursite.com/2019/01/07/git在使用过程中遇到的问题收集/</id>
     <published>2019-01-06T18:02:45.000Z</published>
-    <updated>2019-02-27T05:54:11.964Z</updated>
+    <updated>2019-02-27T16:12:16.136Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="1-在使用命令：git-push-u-origin-master-时遇到如下问题："><a href="#1-在使用命令：git-push-u-origin-master-时遇到如下问题：" class="headerlink" title="1.在使用命令：git push -u origin master 时遇到如下问题："></a>1.在使用命令：git push -u origin master 时遇到如下问题：</h2><p><img src="http://pn44hg1cy.bkt.clouddn.com/15512461032954.jpg" alt=""><br>查询资料，需使用命令：git remote add origin git@github.com:自己github名字/项目名字.git ，直接通过，再次推送（git push -u origin master）时，遇到新的问题：<br><img src="http://pn44hg1cy.bkt.clouddn.com/15512465068413.jpg" alt=""><br>该问题提示在推送前需要先进行拉取，通过命令 ：git pull origin master –allow-unrelated-histories 进行拉取后再进行推送，推送成功。<br><img src="http://pn44hg1cy.bkt.clouddn.com/15512467618299.jpg" alt=""></p>]]></content>
+    <content type="html"><![CDATA[<h2 id="1-在使用命令：git-push-u-origin-master-时遇到如下问题："><a href="#1-在使用命令：git-push-u-origin-master-时遇到如下问题：" class="headerlink" title="1.在使用命令：git push -u origin master 时遇到如下问题："></a>1.在使用命令：git push -u origin master 时遇到如下问题：</h2><p><img src="http://pn44hg1cy.bkt.clouddn.com/15512461032954.jpg" alt=""><br>查询资料，需使用命令：git remote add origin git@github.com:自己github名字/项目名字.git ，直接通过，再次推送（git push -u origin master）时，遇到新的问题：<br><img src="http://pn44hg1cy.bkt.clouddn.com/15512465068413.jpg" alt=""><br>该问题提示在推送前需要先进行拉取，通过命令 ：git pull origin master –allow-unrelated-histories 进行拉取后再进行推送，推送成功。<br><img src="http://pn44hg1cy.bkt.clouddn.com/15512467618299.jpg" alt=""></p><h2 id="2-在使用命令：pod-repo-push-xxx-spec-时遇到如下问题："><a href="#2-在使用命令：pod-repo-push-xxx-spec-时遇到如下问题：" class="headerlink" title="2.在使用命令：pod repo push xxx.spec 时遇到如下问题："></a>2.在使用命令：pod repo push xxx.spec 时遇到如下问题：</h2><p><img src="http://pn44hg1cy.bkt.clouddn.com/15512827975813.jpg" alt=""><br>当时检查发现远程仓库中.spec文件和本地的不一致，通过命令：git push origin master 后通过命令：pod trunk push xxx.spec 提交成功。<br><img src="http://pn44hg1cy.bkt.clouddn.com/15512830008543.jpg" alt=""><br><img src="http://pn44hg1cy.bkt.clouddn.com/15512832571505.jpg" alt=""></p><h2 id="3-在使用命令：pod-lib-lint-–no-clean-时遇到如下问题："><a href="#3-在使用命令：pod-lib-lint-–no-clean-时遇到如下问题：" class="headerlink" title="3.在使用命令：pod lib lint –no-clean 时遇到如下问题："></a>3.在使用命令：pod lib lint –no-clean 时遇到如下问题：</h2><p><img src="http://pn44hg1cy.bkt.clouddn.com/15512836143985.jpg" alt=""><br>当时查询工程文件发现有黄色❗️的提示，点击提示xcode自动修复后 ，再使用命令：pod lib lint 本地验证直接验证通过。<br><img src="http://pn44hg1cy.bkt.clouddn.com/15512839006887.jpg" alt=""></p>]]></content>
     
     <summary type="html">
     

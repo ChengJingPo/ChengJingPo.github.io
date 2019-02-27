@@ -761,7 +761,7 @@
             
               
                 
-                <a class="post-title-link" href="/2019/01/07/123/" itemprop="url">
+                <a class="post-title-link" href="/2019/01/07/git在使用过程中遇到的问题收集/" itemprop="url">
                   git在使用过程中遇到的问题收集
                 </a>
               
@@ -805,8 +805,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2019/01/07/123/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/01/07/123/" itemprop="commentsCount"></span>
+                <a href="/2019/01/07/git在使用过程中遇到的问题收集/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/01/07/git在使用过程中遇到的问题收集/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -832,6 +832,8 @@
         
           
             <h2 id="1-在使用命令：git-push-u-origin-master-时遇到如下问题："><a href="#1-在使用命令：git-push-u-origin-master-时遇到如下问题：" class="headerlink" title="1.在使用命令：git push -u origin master 时遇到如下问题："></a>1.在使用命令：git push -u origin master 时遇到如下问题：</h2><p><img src="http://pn44hg1cy.bkt.clouddn.com/15512461032954.jpg" alt=""><br>查询资料，需使用命令：git remote add origin git@github.com:自己github名字/项目名字.git ，直接通过，再次推送（git push -u origin master）时，遇到新的问题：<br><img src="http://pn44hg1cy.bkt.clouddn.com/15512465068413.jpg" alt=""><br>该问题提示在推送前需要先进行拉取，通过命令 ：git pull origin master –allow-unrelated-histories 进行拉取后再进行推送，推送成功。<br><img src="http://pn44hg1cy.bkt.clouddn.com/15512467618299.jpg" alt=""></p>
+<h2 id="2-在使用命令：pod-repo-push-xxx-spec-时遇到如下问题："><a href="#2-在使用命令：pod-repo-push-xxx-spec-时遇到如下问题：" class="headerlink" title="2.在使用命令：pod repo push xxx.spec 时遇到如下问题："></a>2.在使用命令：pod repo push xxx.spec 时遇到如下问题：</h2><p><img src="http://pn44hg1cy.bkt.clouddn.com/15512827975813.jpg" alt=""><br>当时检查发现远程仓库中.spec文件和本地的不一致，通过命令：git push origin master 后通过命令：pod trunk push xxx.spec 提交成功。<br><img src="http://pn44hg1cy.bkt.clouddn.com/15512830008543.jpg" alt=""><br><img src="http://pn44hg1cy.bkt.clouddn.com/15512832571505.jpg" alt=""></p>
+<h2 id="3-在使用命令：pod-lib-lint-–no-clean-时遇到如下问题："><a href="#3-在使用命令：pod-lib-lint-–no-clean-时遇到如下问题：" class="headerlink" title="3.在使用命令：pod lib lint –no-clean 时遇到如下问题："></a>3.在使用命令：pod lib lint –no-clean 时遇到如下问题：</h2><p><img src="http://pn44hg1cy.bkt.clouddn.com/15512836143985.jpg" alt=""><br>当时查询工程文件发现有黄色❗️的提示，点击提示xcode自动修复后 ，再使用命令：pod lib lint 本地验证直接验证通过。<br><img src="http://pn44hg1cy.bkt.clouddn.com/15512839006887.jpg" alt=""></p>
 
           
         
