@@ -1,0 +1,892 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="iOS记录行" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="(提示：消息转发有2种方法：
+方法一：通过performSelector: withObject:该方法进行转发，但时其只能处理SEL对应方法的返回值是对象；
+方法二：通过NSInvocation进行转发，其优点是可以处理SEL对应方法的返回值是非对象的情况。
+
+关于iOS的路由方案，有名的如：蘑菇街的路由方案，本文是借助于命令模式（即target-action)实现的方案一：仅使用perform">
+<meta property="og:type" content="article">
+<meta property="og:title" content="体验神奇的路由方案">
+<meta property="og:url" content="http://yoursite.com/2019/03/02/体验神奇的路由方案/index.html">
+<meta property="og:site_name" content="iOS记录行">
+<meta property="og:description" content="(提示：消息转发有2种方法：
+方法一：通过performSelector: withObject:该方法进行转发，但时其只能处理SEL对应方法的返回值是对象；
+方法二：通过NSInvocation进行转发，其优点是可以处理SEL对应方法的返回值是非对象的情况。
+
+关于iOS的路由方案，有名的如：蘑菇街的路由方案，本文是借助于命令模式（即target-action)实现的方案一：仅使用perform">
+<meta property="og:updated_time" content="2019-03-02T12:11:31.854Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="体验神奇的路由方案">
+<meta name="twitter:description" content="(提示：消息转发有2种方法：
+方法一：通过performSelector: withObject:该方法进行转发，但时其只能处理SEL对应方法的返回值是对象；
+方法二：通过NSInvocation进行转发，其优点是可以处理SEL对应方法的返回值是非对象的情况。
+
+关于iOS的路由方案，有名的如：蘑菇街的路由方案，本文是借助于命令模式（即target-action)实现的方案一：仅使用perform">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/03/02/体验神奇的路由方案/"/>
+
+
+  <title> 体验神奇的路由方案 | iOS记录行 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">iOS记录行</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-search">
+          <a href="/search" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-search"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                体验神奇的路由方案
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2019-03-02T16:04:18+08:00" content="2019-03-02">
+              2019-03-02
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2019/03/02/体验神奇的路由方案/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/03/02/体验神奇的路由方案/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="提示：消息转发有2种方法："><a href="#提示：消息转发有2种方法：" class="headerlink" title="(提示：消息转发有2种方法："></a>(提示：消息转发有2种方法：</h4><ul>
+<li>方法一：通过performSelector: withObject:该方法进行转发，但时其只能处理SEL对应方法的返回值是对象；</li>
+<li>方法二：通过NSInvocation进行转发，其优点是可以处理SEL对应方法的返回值是非对象的情况。</li>
+</ul>
+<h3 id="关于iOS的路由方案，有名的如：蘑菇街的路由方案，本文是借助于命令模式（即target-action-实现的"><a href="#关于iOS的路由方案，有名的如：蘑菇街的路由方案，本文是借助于命令模式（即target-action-实现的" class="headerlink" title="关于iOS的路由方案，有名的如：蘑菇街的路由方案，本文是借助于命令模式（即target-action)实现的"></a>关于iOS的路由方案，有名的如：蘑菇街的路由方案，本文是借助于命令模式（即target-action)实现的</h3><p>方案一：仅使用performSelector: withObject: 方法进行操作，具体代码：</p>
+<pre><code>  // 1.获取目标
+Class targetCls = NSClassFromString(targetName);
+if (targetCls == nil) {
+    NSLog(@&quot;目标不存在&quot;);
+    return nil;
+}
+
+//2.获取action
+SEL action = NSSelectorFromString(actionName);
+if (action == nil) {
+    NSLog(@&quot;action不存在&quot;);
+    return nil;
+}
+
+if (![targetCls respondsToSelector:action]) {
+
+    NSLog(@&quot;目标找不到对应的方法&quot;);
+    return nil;
+}
+
+if (isRequiredReturnValue) {
+    SuppressPerformSelectorLeakWarning(return [targetCls performSelector:action withObject:params]);
+}else {
+    SuppressPerformSelectorLeakWarning([targetCls performSelector:action withObject:params]);
+}
+return nil;
+}
+</code></pre><p>该方法是在CJQMediatorManger+CJQMain.m中进行调用的，如：</p>
+<pre><code>+(UIViewController *)rootTabBarController{
+                 UIViewController *vc =  [self performTarget:@&quot;CJQMainModuleAPI&quot;
+                                               action:@&quot;rootTabBarController&quot;                   
+                                               params:nil isRequiredReturnValue:YES];
+                 return vc;
+}
+</code></pre><p>总结：此方案能实现路由的体验，当是缺点也很明显，当SEL的返回类型是非对象时处理不了，会出现程序崩溃。</p>
+<p>方案二：该方案是在方案一的基础上改进的，能够通过URL：<a href="http://CJQMainModuleAPI/rootTabBarController" target="_blank" rel="external">http://CJQMainModuleAPI/rootTabBarController</a>“ 进行处理。实现代码：</p>
+<pre><code>    //单例
+   +(instancetype)sharedInstance {
+
+       static CJQMediatorManger *mediator;
+       static dispatch_once_t onceToken;
+       dispatch_once(&amp;onceToken, ^{
+           mediator = [[CJQMediatorManger alloc] init];
+       });
+
+       return mediator;
+
+    }
+
+
+
+
+
+
+ - (id)openUrl: (NSString *)urlStr WithParams: (NSDictionary *)ExtenParams {
+
+     NSURL *url = [NSURL URLWithString:urlStr];
+     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+
+    NSString *urlString = [url query];
+    for (NSString *param in [urlString componentsSeparatedByString:@&quot;&amp;&quot;]) {
+
+        NSArray *elts = [param componentsSeparatedByString:@&quot;=&quot;];
+
+        if ([elts count] &lt; 2) continue;
+
+        id firstEle = [elts firstObject];
+        id lastEle = [elts lastObject];
+
+        if (firstEle &amp;&amp; lastEle) {
+            [params setValue:lastEle forKey:firstEle];
+        }
+
+     }
+
+    NSArray *arrayParams = ExtenParams[@&quot;paramFlag&quot;];
+    NSDictionary *mutliParams = @{
+                                  @&quot;params&quot; : params,
+                                  @&quot;arrayParams&quot;: arrayParams,
+                                  @&quot;middleClickBlock&quot; :   ExtenParams[@&quot;middleClickBlock&quot;]
+                                  };
+
+    NSString *actionName = [url.path  stringByReplacingOccurrencesOfString:@&quot;/&quot; withString:@&quot;&quot;];
+   if ([actionName hasPrefix:@&quot;native&quot;]) {
+       return @(NO);
+   }
+
+   BOOL isRqRetuValue = ExtenParams[@&quot;isRequiredReturnValue&quot;];
+
+   id result  = [self performTarget:url.host
+                          action:actionName
+                          params:mutliParams
+                          isRequiredReturnValue:isRqRetuValue];
+   return result;
+
+}
+
+
+
+
+   - (id)performTarget: (NSString *)targetName action: (NSString *)actionName params: (id)params isRequiredReturnValue: (BOOL)isRequiredReturnValue {
+
+       NSString *targetClassString = [NSString stringWithFormat:@&quot;OCTarget_%@&quot;,targetName];
+       NSString *actionMethodString = [NSString stringWithFormat:@&quot;action_%@:&quot;,actionName ];
+
+       Class targetClass = NSClassFromString(targetClassString);
+       NSObject *target = [[targetClass alloc] init];
+
+       SEL action = NSSelectorFromString(actionMethodString);
+
+       if ([target respondsToSelector:action]) {
+            return [self safePerFormTarget:target
+                                    action:action
+                                    params:params
+                                    isRequiredReturnValue:isRequiredReturnValue];
+        } else {
+
+            SEL action = NSSelectorFromString(@&quot;notFound&quot;);
+            if ([target respondsToSelector:action]) {
+
+                 return [self safePerFormTarget:target
+                                         action:action
+                                         params:params
+                                         isRequiredReturnValue:isRequiredReturnValue];
+             }else {
+               return nil;
+          }
+  }  
+  }
+
+
+
+
+
+
+ - (id)safePerFormTarget: (NSObject *)target action: (SEL)action params: (id)params isRequiredReturnValue: (BOOL)isRequiredReturnValue {
+
+      NSMethodSignature *methodSig = [target methodSignatureForSelector:action];
+
+      if (methodSig == nil) {
+          return nil;
+      }
+
+      const char *returnType = [methodSig methodReturnType];
+
+      if (strcmp(returnType, @encode(void)) == 0) {
+
+          NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSig];
+          [invocation setArgument:&amp;params atIndex:2];
+          [invocation setTarget:target];
+          [invocation setSelector:action];
+          [invocation invoke];
+
+          return nil;
+      }
+
+    if (strcmp(returnType, @encode(BOOL)) == 0) {
+
+        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSig];
+       [invocation setArgument:&amp;params atIndex:2];
+       [invocation setTarget:target];
+       [invocation setSelector:action];
+       [invocation invoke];
+
+       NSInteger result = 0;
+       [invocation getReturnValue:&amp;result];
+
+       return @(result);
+    }
+
+   if (strcmp(returnType, @encode(NSInteger)) == 0) {
+
+       NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSig];
+       [invocation setArgument:&amp;params atIndex:2];
+       [invocation setTarget:target];
+       [invocation setSelector:action];
+       [invocation invoke];
+
+      NSInteger result = 0;
+      [invocation getReturnValue:&amp;result];
+
+      return @(result);
+   }
+
+  if (strcmp(returnType, @encode(NSUInteger)) == 0) {
+
+      NSInvocation *invocaton = [NSInvocation invocationWithMethodSignature:methodSig];
+      [invocaton setArgument:&amp;params atIndex:2];
+      [invocaton setTarget:target];
+      [invocaton setSelector:action];
+      [invocaton invoke];
+
+     NSInteger result = 0;
+     [invocaton getReturnValue:&amp;result];
+
+     return @(result);
+
+  }
+ if (strcmp(returnType, @encode(CGFloat)) ==0) {
+
+     NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSig];
+     [invocation setArgument:&amp;params atIndex:2];
+     [invocation setTarget:target];
+     [invocation setSelector:action];
+     [invocation invoke];
+
+     NSUInteger restult = 0;
+     [invocation getReturnValue:&amp;restult];
+
+     return @(restult);
+  }
+
+ if (isRequiredReturnValue) {
+      SuppressPerformSelectorLeakWarning(return [target performSelector:action withObject:params]);
+  }else {
+     SuppressPerformSelectorLeakWarning([target performSelector:action withObject:params]);
+     }
+
+ return nil;
+
+ }
+</code></pre><p>通过URL处理的方法（openUrl:  WithParams:）是在CJQMediatorManger+CJQMain.m中进行调用的，如：</p>
+<pre><code>+ (UIViewController *)rootTabBarController {
+
+             UIViewController *vc = [[CJQMediatorManger sharedInstance] openUrl:@&quot;http://CJQMainModuleAPI/rootTabBarController&quot; 
+                                                                        WithParams:@{ @&quot;isRequiredReturnValue&quot; :@(YES),
+                                                                                      @&quot;paramFlag&quot;: @&quot;&quot;,
+                                                                                      @&quot;middleClickBlock&quot; : @&quot;&quot;} ]; 
+
+             return vc;
+
+
+     }
+</code></pre><p>更详细的，请参考：<a href="https://github.com/ChengJingPo/CJQFM" target="_blank" rel="external">demo</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/02/生成带有子库的库/" rel="next" title="生成带有子库的库">
+                <i class="fa fa-chevron-left"></i> 生成带有子库的库
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+
+
+    </div>
+    
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2019/03/02/体验神奇的路由方案/"
+           data-title="体验神奇的路由方案" data-url="http://yoursite.com/2019/03/02/体验神奇的路由方案/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://imgsrc.baidu.com/forum/w%3D580/sign=9e6262bec83d70cf4cfaaa05c8ddd1ba/e7e09858ccbf6c8161561c6fbd3eb13532fa40b2.jpg"
+               alt="ChengJingPo" />
+          <p class="site-author-name" itemprop="name">ChengJingPo</p>
+          <p class="site-description motion-element" itemprop="description">简单记录成长过程的点滴，不断磨炼自己。。。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/">
+              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/ChengJingPo" target="_blank" title="gitHub">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  gitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#提示：消息转发有2种方法："><span class="nav-number">1.</span> <span class="nav-text">(提示：消息转发有2种方法：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于iOS的路由方案，有名的如：蘑菇街的路由方案，本文是借助于命令模式（即target-action-实现的"><span class="nav-number"></span> <span class="nav-text">关于iOS的路由方案，有名的如：蘑菇街的路由方案，本文是借助于命令模式（即target-action)实现的</span></a></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ChengJingPo</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"iOSNotesByChengJingPo"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

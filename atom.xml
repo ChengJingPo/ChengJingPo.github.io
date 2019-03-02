@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-03-02T07:45:48.921Z</updated>
+  <updated>2019-03-02T12:11:31.854Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>体验神奇的路由方案</title>
+    <link href="http://yoursite.com/2019/03/02/%E4%BD%93%E9%AA%8C%E7%A5%9E%E5%A5%87%E7%9A%84%E8%B7%AF%E7%94%B1%E6%96%B9%E6%A1%88/"/>
+    <id>http://yoursite.com/2019/03/02/体验神奇的路由方案/</id>
+    <published>2019-03-02T08:04:18.000Z</published>
+    <updated>2019-03-02T12:11:31.854Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="提示：消息转发有2种方法："><a href="#提示：消息转发有2种方法：" class="headerlink" title="(提示：消息转发有2种方法："></a>(提示：消息转发有2种方法：</h4><ul><li>方法一：通过performSelector: withObject:该方法进行转发，但时其只能处理SEL对应方法的返回值是对象；</li><li>方法二：通过NSInvocation进行转发，其优点是可以处理SEL对应方法的返回值是非对象的情况。</li></ul><h3 id="关于iOS的路由方案，有名的如：蘑菇街的路由方案，本文是借助于命令模式（即target-action-实现的"><a href="#关于iOS的路由方案，有名的如：蘑菇街的路由方案，本文是借助于命令模式（即target-action-实现的" class="headerlink" title="关于iOS的路由方案，有名的如：蘑菇街的路由方案，本文是借助于命令模式（即target-action)实现的"></a>关于iOS的路由方案，有名的如：蘑菇街的路由方案，本文是借助于命令模式（即target-action)实现的</h3><p>方案一：仅使用performSelector: withObject: 方法进行操作，具体代码：</p><pre><code>  // 1.获取目标Class targetCls = NSClassFromString(targetName);if (targetCls == nil) {    NSLog(@&quot;目标不存在&quot;);    return nil;}//2.获取actionSEL action = NSSelectorFromString(actionName);if (action == nil) {    NSLog(@&quot;action不存在&quot;);    return nil;}if (![targetCls respondsToSelector:action]) {    NSLog(@&quot;目标找不到对应的方法&quot;);    return nil;}if (isRequiredReturnValue) {    SuppressPerformSelectorLeakWarning(return [targetCls performSelector:action withObject:params]);}else {    SuppressPerformSelectorLeakWarning([targetCls performSelector:action withObject:params]);}return nil;}</code></pre><p>该方法是在CJQMediatorManger+CJQMain.m中进行调用的，如：</p><pre><code>+(UIViewController *)rootTabBarController{                 UIViewController *vc =  [self performTarget:@&quot;CJQMainModuleAPI&quot;                                               action:@&quot;rootTabBarController&quot;                                                                  params:nil isRequiredReturnValue:YES];                 return vc;}</code></pre><p>总结：此方案能实现路由的体验，当是缺点也很明显，当SEL的返回类型是非对象时处理不了，会出现程序崩溃。</p><p>方案二：该方案是在方案一的基础上改进的，能够通过URL：<a href="http://CJQMainModuleAPI/rootTabBarController" target="_blank" rel="external">http://CJQMainModuleAPI/rootTabBarController</a>“ 进行处理。实现代码：</p><pre><code>    //单例   +(instancetype)sharedInstance {       static CJQMediatorManger *mediator;       static dispatch_once_t onceToken;       dispatch_once(&amp;onceToken, ^{           mediator = [[CJQMediatorManger alloc] init];       });       return mediator;    } - (id)openUrl: (NSString *)urlStr WithParams: (NSDictionary *)ExtenParams {     NSURL *url = [NSURL URLWithString:urlStr];     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];    NSString *urlString = [url query];    for (NSString *param in [urlString componentsSeparatedByString:@&quot;&amp;&quot;]) {        NSArray *elts = [param componentsSeparatedByString:@&quot;=&quot;];        if ([elts count] &lt; 2) continue;        id firstEle = [elts firstObject];        id lastEle = [elts lastObject];        if (firstEle &amp;&amp; lastEle) {            [params setValue:lastEle forKey:firstEle];        }     }    NSArray *arrayParams = ExtenParams[@&quot;paramFlag&quot;];    NSDictionary *mutliParams = @{                                  @&quot;params&quot; : params,                                  @&quot;arrayParams&quot;: arrayParams,                                  @&quot;middleClickBlock&quot; :   ExtenParams[@&quot;middleClickBlock&quot;]                                  };    NSString *actionName = [url.path  stringByReplacingOccurrencesOfString:@&quot;/&quot; withString:@&quot;&quot;];   if ([actionName hasPrefix:@&quot;native&quot;]) {       return @(NO);   }   BOOL isRqRetuValue = ExtenParams[@&quot;isRequiredReturnValue&quot;];   id result  = [self performTarget:url.host                          action:actionName                          params:mutliParams                          isRequiredReturnValue:isRqRetuValue];   return result;}   - (id)performTarget: (NSString *)targetName action: (NSString *)actionName params: (id)params isRequiredReturnValue: (BOOL)isRequiredReturnValue {       NSString *targetClassString = [NSString stringWithFormat:@&quot;OCTarget_%@&quot;,targetName];       NSString *actionMethodString = [NSString stringWithFormat:@&quot;action_%@:&quot;,actionName ];       Class targetClass = NSClassFromString(targetClassString);       NSObject *target = [[targetClass alloc] init];       SEL action = NSSelectorFromString(actionMethodString);       if ([target respondsToSelector:action]) {            return [self safePerFormTarget:target                                    action:action                                    params:params                                    isRequiredReturnValue:isRequiredReturnValue];        } else {            SEL action = NSSelectorFromString(@&quot;notFound&quot;);            if ([target respondsToSelector:action]) {                 return [self safePerFormTarget:target                                         action:action                                         params:params                                         isRequiredReturnValue:isRequiredReturnValue];             }else {               return nil;          }  }    } - (id)safePerFormTarget: (NSObject *)target action: (SEL)action params: (id)params isRequiredReturnValue: (BOOL)isRequiredReturnValue {      NSMethodSignature *methodSig = [target methodSignatureForSelector:action];      if (methodSig == nil) {          return nil;      }      const char *returnType = [methodSig methodReturnType];      if (strcmp(returnType, @encode(void)) == 0) {          NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSig];          [invocation setArgument:&amp;params atIndex:2];          [invocation setTarget:target];          [invocation setSelector:action];          [invocation invoke];          return nil;      }    if (strcmp(returnType, @encode(BOOL)) == 0) {        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSig];       [invocation setArgument:&amp;params atIndex:2];       [invocation setTarget:target];       [invocation setSelector:action];       [invocation invoke];       NSInteger result = 0;       [invocation getReturnValue:&amp;result];       return @(result);    }   if (strcmp(returnType, @encode(NSInteger)) == 0) {       NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSig];       [invocation setArgument:&amp;params atIndex:2];       [invocation setTarget:target];       [invocation setSelector:action];       [invocation invoke];      NSInteger result = 0;      [invocation getReturnValue:&amp;result];      return @(result);   }  if (strcmp(returnType, @encode(NSUInteger)) == 0) {      NSInvocation *invocaton = [NSInvocation invocationWithMethodSignature:methodSig];      [invocaton setArgument:&amp;params atIndex:2];      [invocaton setTarget:target];      [invocaton setSelector:action];      [invocaton invoke];     NSInteger result = 0;     [invocaton getReturnValue:&amp;result];     return @(result);  } if (strcmp(returnType, @encode(CGFloat)) ==0) {     NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSig];     [invocation setArgument:&amp;params atIndex:2];     [invocation setTarget:target];     [invocation setSelector:action];     [invocation invoke];     NSUInteger restult = 0;     [invocation getReturnValue:&amp;restult];     return @(restult);  } if (isRequiredReturnValue) {      SuppressPerformSelectorLeakWarning(return [target performSelector:action withObject:params]);  }else {     SuppressPerformSelectorLeakWarning([target performSelector:action withObject:params]);     } return nil; }</code></pre><p>通过URL处理的方法（openUrl:  WithParams:）是在CJQMediatorManger+CJQMain.m中进行调用的，如：</p><pre><code>+ (UIViewController *)rootTabBarController {             UIViewController *vc = [[CJQMediatorManger sharedInstance] openUrl:@&quot;http://CJQMainModuleAPI/rootTabBarController&quot;                                                                         WithParams:@{ @&quot;isRequiredReturnValue&quot; :@(YES),                                                                                      @&quot;paramFlag&quot;: @&quot;&quot;,                                                                                      @&quot;middleClickBlock&quot; : @&quot;&quot;} ];              return vc;     }</code></pre><p>更详细的，请参考：<a href="https://github.com/ChengJingPo/CJQFM" target="_blank" rel="external">demo</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;提示：消息转发有2种方法：&quot;&gt;&lt;a href=&quot;#提示：消息转发有2种方法：&quot; class=&quot;headerlink&quot; title=&quot;(提示：消息转发有2种方法：&quot;&gt;&lt;/a&gt;(提示：消息转发有2种方法：&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;方法一：通过performSelec
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>生成带有子库的库</title>
@@ -308,22 +330,6 @@
       <category term="jQuery" scheme="http://yoursite.com/tags/jQuery/"/>
     
       <category term="表格" scheme="http://yoursite.com/tags/%E8%A1%A8%E6%A0%BC/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>组件化了解</title>
-    <link href="http://yoursite.com/2018/10/17/%E7%BB%84%E4%BB%B6%E5%8C%96%E4%BA%86%E8%A7%A3/"/>
-    <id>http://yoursite.com/2018/10/17/组件化了解/</id>
-    <published>2018-10-17T08:34:03.000Z</published>
-    <updated>2018-10-17T08:36:33.656Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="其他" scheme="http://yoursite.com/categories/%E5%85%B6%E4%BB%96/"/>
-    
     
   </entry>
   
