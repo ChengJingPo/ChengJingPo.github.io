@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-02-19T01:13:48.359Z</updated>
+  <updated>2019-03-02T07:45:48.921Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>生成带有子库的库</title>
+    <link href="http://yoursite.com/2019/03/02/%E7%94%9F%E6%88%90%E5%B8%A6%E6%9C%89%E5%AD%90%E5%BA%93%E7%9A%84%E5%BA%93/"/>
+    <id>http://yoursite.com/2019/03/02/生成带有子库的库/</id>
+    <published>2019-03-02T06:40:31.000Z</published>
+    <updated>2019-03-02T07:45:48.921Z</updated>
+    
+    <content type="html"><![CDATA[<p>通过该文<a href="https://chengjingpo.github.io/2019/02/18/github%E4%B8%8A%E9%80%9A%E8%BF%87Cocoapods%E6%9E%84%E5%BB%BA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E5%BA%93/" target="_blank" rel="external">github上通过Cocoapods构建属于自己的库</a>创建属于自己的库时，创建成功后，通过pod加载到对应工程时所有的文件都会加载，即：<img src="http://pn44hg1cy.bkt.clouddn.com/15515123279232.jpg" alt=""><br>。但有时项目只需要其中某些文件，多余的其他文件没有用。针对这种情况可以通过建立子库的形式来解决该问题。建立子库需要做进一步操作，通过修改您创建库.spec 就行。即修改：<img src="http://pn44hg1cy.bkt.clouddn.com/15515116426884.jpg" alt=""> 以及podfile中直接加载对应的子库 ：pod ‘CJPBaseComponents/Category’, ‘~&gt; 0.2.1’。 重新加载后结果如下：<br><img src="http://pn44hg1cy.bkt.clouddn.com/15515119335462.jpg" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;通过该文&lt;a href=&quot;https://chengjingpo.github.io/2019/02/18/github%E4%B8%8A%E9%80%9A%E8%BF%87Cocoapods%E6%9E%84%E5%BB%BA%E5%B1%9E%E4%BA%8E%E8%8
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>github上通过Cocoapods构建属于自己的库</title>
@@ -303,24 +324,6 @@
     
       <category term="其他" scheme="http://yoursite.com/categories/%E5%85%B6%E4%BB%96/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>runtime的了解</title>
-    <link href="http://yoursite.com/2018/05/17/runtime%E7%9A%84%E4%BA%86%E8%A7%A3/"/>
-    <id>http://yoursite.com/2018/05/17/runtime的了解/</id>
-    <published>2018-05-17T05:34:05.000Z</published>
-    <updated>2018-10-17T08:28:43.840Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="iOS源码分析" scheme="http://yoursite.com/categories/iOS%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"/>
-    
-    
-      <category term="iOS源码分析" scheme="http://yoursite.com/tags/iOS%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"/>
     
   </entry>
   
