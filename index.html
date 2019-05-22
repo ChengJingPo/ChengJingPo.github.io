@@ -652,7 +652,7 @@ return nil;
       
         
           
-            <p>通过该文<a href="https://chengjingpo.github.io/2019/02/18/github%E4%B8%8A%E9%80%9A%E8%BF%87Cocoapods%E6%9E%84%E5%BB%BA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E5%BA%93/" target="_blank" rel="external">github上通过Cocoapods构建属于自己的库</a>创建属于自己的库时，创建成功后，通过pod加载到对应工程时所有的文件都会加载，即：<img src="http://pn44hg1cy.bkt.clouddn.com/15515123279232.jpg" alt=""><br>。但有时项目只需要其中某些文件，多余的其他文件没有用。针对这种情况可以通过建立子库的形式来解决该问题。建立子库需要做进一步操作，通过修改您创建库.spec 就行。即修改：<img src="http://pn44hg1cy.bkt.clouddn.com/15515116426884.jpg" alt=""> 以及podfile中直接加载对应的子库 ：pod ‘CJPBaseComponents/Category’, ‘~&gt; 0.2.1’。 重新加载后结果如下：<br><img src="http://pn44hg1cy.bkt.clouddn.com/15515119335462.jpg" alt=""></p>
+            <p>通过该文<a href="https://chengjingpo.github.io/2019/02/18/github%E4%B8%8A%E9%80%9A%E8%BF%87Cocoapods%E6%9E%84%E5%BB%BA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E5%BA%93/" target="_blank" rel="external">github上通过Cocoapods构建属于自己的库</a>创建属于自己的库时，创建成功后，通过pod加载到对应工程时所有的文件都会加载，即：<img src="http://jpc2018.xyz/15515123279232.jpg" alt=""><br>。但有时项目只需要其中某些文件，多余的其他文件没有用。针对这种情况可以通过建立子库的形式来解决该问题。建立子库需要做进一步操作，通过修改您创建库.spec 就行。即修改：<img src="http://jpc2018.xyz/15515116426884.jpg" alt=""> 以及podfile中直接加载对应的子库 ：pod ‘CJPBaseComponents/Category’, ‘~&gt; 0.2.1’。 重新加载后结果如下：<br><img src="http://jpc2018.xyz/15515119335462.jpg" alt=""></p>
 
           
         
@@ -770,7 +770,7 @@ return nil;
 <ul>
 <li><p>步骤二：安装Flutter SDK </p>
 <ol>
-<li>首先到<a href="https://flutter.dev/docs/development/tools/sdk/releases?tab=macos" target="_blank" rel="external">Flutter官网</a>下载SDK<br><img src="media/15556472917116/Snip20190219_8.png" alt="Snip20190219_8"><br>（我这里下载的是稳定版本，建议下载稳定版本）</li>
+<li>首先到<a href="https://flutter.dev/docs/development/tools/sdk/releases?tab=macos" target="_blank" rel="external">Flutter官网</a>下载SDK<br><img src="http://jpc2018.xyz/Snip20190219_8.png" alt=""><br>（我这里下载的是稳定版本，建议下载稳定版本）</li>
 <li><p>下载好SDK后，通过命令解压到想安装到目录，如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ cd /Users/cjq/Documents/flutter</div><div class="line">$ unzip ~/Downloads/flutter_macos_v1.2.1-stable.zip</div></pre></td></tr></table></figure>
 <p>或者手动解压到您想要安装到目录</p>
@@ -789,11 +789,11 @@ return nil;
 </li>
 <li><p>配置Xcode命令行工具以使用新安装的Xcode版本</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer</div></pre></td></tr></table></figure>
-<p><img src="media/15556472917116/15556506231348.jpg" alt=""><br>注：以上路径是对于最新版的Xcode的路径（或只安装了一个Xcode） ，若您需要使用不同版本的Xcode版本，需要指定相应路径</p>
+<p><img src="http://jpc2018.xyz/15556506231348.jpg" alt=""><br>注：以上路径是对于最新版的Xcode的路径（或只安装了一个Xcode） ，若您需要使用不同版本的Xcode版本，需要指定相应路径</p>
 </li>
 <li><p>同意Xcode许可协议，通过打开一次Xcode或者通过命令实现</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo xcodebuild -license</div></pre></td></tr></table></figure>
-<p><img src="media/15556472917116/15556513514573.jpg" alt=""></p>
+<p><img src="http://jpc2018.xyz/15556513514573.jpg" alt=""></p>
 </li>
 <li><p>打开iOS模拟器（即准备在iOS模拟器上运行并测试自己写的Flutter应用）<br>通过命令行打开模拟器：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ open -a Simulator</div></pre></td></tr></table></figure>
@@ -806,13 +806,13 @@ return nil;
 <ol>
 <li><p>通过命令创建一个Flutter项目</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ flutter create my_app</div></pre></td></tr></table></figure>
-<p><img src="media/15556472917116/15556530469490.jpg" alt=""></p>
+<p><img src="http://jpc2018.xyz/15556530469490.jpg" alt=""></p>
 </li>
 <li><p>运行完上面的命令后，会在当前目录下创建一个名为my_app 的项目，通过以下命令运行：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ cd my_app</div><div class="line">$ flutter run</div></pre></td></tr></table></figure>
 </li>
 </ol>
-<p><img src="media/15556472917116/15556534223348.jpg" alt=""><br>运行结果：<br><img src="media/15556472917116/15556534811616.jpg" alt=""></p>
+<p><img src="http://jpc2018.xyz/15556534223348.jpg" alt=""><br>运行结果：<br><img src="http://jpc2018.xyz/15556534811616.jpg" alt=""></p>
 </li>
 <li></li>
 </ul>
@@ -916,17 +916,17 @@ return nil;
       
         
           
-            <p>1.进入目标文件，即cd 到目标文件夹，通过命令pod lib create 库名 创建库<br><img src="http://pn44hg1cy.bkt.clouddn.com/Snip20190218_25.png" alt="Snip20190218_25"></p>
-<p>2.通过命令：git remote add origin <a href="https://github.com/xxxx/xxxx" target="_blank" rel="external">https://github.com/xxxx/xxxx</a> 和远程库进行连接<br><img src="http://pn44hg1cy.bkt.clouddn.com/Snip20190218_26.png" alt="Snip20190218_26"><br>3.<br>  3.1通过命令:git status  查看状态<img src="http://pn44hg1cy.bkt.clouddn.com/Snip20190218_27.png" alt="Snip20190218_27"></p>
-<p>  3.2通过命令:git add .   添加变化<br>  <img src="http://pn44hg1cy.bkt.clouddn.com/Snip20190218_28.png" alt="Snip20190218_28"><br>  3.3通过命令:git commit -m ‘first commit’  提交记录<img src="http://pn44hg1cy.bkt.clouddn.com/Snip20190218_29.png" alt="Snip20190218_29"></p>
-<p>  3.4通过命令:git push -u origin master     推送到远程<img src="http://pn44hg1cy.bkt.clouddn.com/Snip20190218_30.png" alt="Snip20190218_30"></p>
-<p>4.打标签<br>  4.1通过命令:git tag  先查看下已有标签<br>  4.2通过命令:git tag ‘0.x.x’  进行本地打标签<br>  4.3通过命令:git push –tags  已打的标签同步提交到远程库<br>  <img src="http://pn44hg1cy.bkt.clouddn.com/Snip20190218_31.png" alt="Snip20190218_31"></p>
-<p>5.修改.podspec文件参数<br>   修改完后保存下，再进行步骤3操作的<br>   <img src="http://pn44hg1cy.bkt.clouddn.com/Snip20190218_32.png" alt="Snip20190218_32"></p>
-<p>6.提交到远程库<br>  6.1通过命令:pod lib lint 进行本地验证<img src="http://pn44hg1cy.bkt.clouddn.com/Snip20190218_23.png" alt="Snip20190218_23"></p>
-<p>  6.2通过命令:pod spec lint 进行远程验证<img src="http://pn44hg1cy.bkt.clouddn.com/Snip20190218_22.png" alt="Snip20190218_22"></p>
-<p>  6.3通过命令:pod trunk push xxxx.podspec 进行远程提交!<br><img src="http://pn44hg1cy.bkt.clouddn.com/Snip20190218_14.png" alt="Snip20190218_14"></p>
-<p>7.库查询验证<br>  通过命令：pod search xxxx.podspec 进行查询<br>  <img src="http://pn44hg1cy.bkt.clouddn.com/Snip20190218_21.png" alt="Snip20190218_21"><br><img src="http://pn44hg1cy.bkt.clouddn.com/Snip20190218_16.png" alt="Snip20190218_16"> 之后您可以您就可以像使用AFN一样在工程中使用您的库了。</p>
-<h2 id="附："><a href="#附：" class="headerlink" title="附："></a>附：</h2><p>在第一次向远程提交（即：git push -u origin master）时遇到以下问题：<br><img src="http://pn44hg1cy.bkt.clouddn.com/Snip20190218_33.png" alt="Snip20190218_33"><br>1）解决方案：<br>（1）通过：git status 查看状态<br><img src="http://pn44hg1cy.bkt.clouddn.com/Snip20190218_35.png" alt="Snip20190218_35"><br>（2）通过：git mergetool 进行合并<br><img src="http://pn44hg1cy.bkt.clouddn.com/Snip20190218_36.png" alt="Snip20190218_36"><br>（3）合并后再提交就OK了，具体看下3.4。<br><a href=""></a></p>
+            <p>1.进入目标文件，即cd 到目标文件夹，通过命令pod lib create 库名 创建库<br><img src="http://jpc2018.xyz/Snip20190218_25.png" alt="Snip20190218_25"></p>
+<p>2.通过命令：git remote add origin <a href="https://github.com/xxxx/xxxx" target="_blank" rel="external">https://github.com/xxxx/xxxx</a> 和远程库进行连接<br><img src="http://jpc2018.xyz/Snip20190218_26.png" alt="Snip20190218_26"><br>3.<br>  3.1通过命令:git status  查看状态<img src="http://jpc2018.xyz/Snip20190218_27.png" alt="Snip20190218_27"></p>
+<p>  3.2通过命令:git add .   添加变化<br>  <img src="http://jpc2018.xyz/Snip20190218_28.png" alt="Snip20190218_28"><br>  3.3通过命令:git commit -m ‘first commit’  提交记录<img src="http://jpc2018.xyz/Snip20190218_29.png" alt="Snip20190218_29"></p>
+<p>  3.4通过命令:git push -u origin master     推送到远程<img src="http://jpc2018.xyz/Snip20190218_30.png" alt="Snip20190218_30"></p>
+<p>4.打标签<br>  4.1通过命令:git tag  先查看下已有标签<br>  4.2通过命令:git tag ‘0.x.x’  进行本地打标签<br>  4.3通过命令:git push –tags  已打的标签同步提交到远程库<br>  <img src="http://jpc2018.xyz/Snip20190218_31.png" alt="Snip20190218_31"></p>
+<p>5.修改.podspec文件参数<br>   修改完后保存下，再进行步骤3操作的<br>   <img src="http://jpc2018.xyz/Snip20190218_32.png" alt="Snip20190218_32"></p>
+<p>6.提交到远程库<br>  6.1通过命令:pod lib lint 进行本地验证<img src="http://jpc2018.xyz/Snip20190218_23.png" alt="Snip20190218_23"></p>
+<p>  6.2通过命令:pod spec lint 进行远程验证<img src="http://jpc2018.xyz/Snip20190218_22.png" alt="Snip20190218_22"></p>
+<p>  6.3通过命令:pod trunk push xxxx.podspec 进行远程提交!<br><img src="http://jpc2018.xyz/Snip20190218_14.png" alt="Snip20190218_14"></p>
+<p>7.库查询验证<br>  通过命令：pod search xxxx.podspec 进行查询<br>  <img src="http://jpc2018.xyz/Snip20190218_21.png" alt="Snip20190218_21"><br><img src="http://jpc2018.xyz/Snip20190218_16.png" alt="Snip20190218_16"> 之后您可以您就可以像使用AFN一样在工程中使用您的库了。</p>
+<h2 id="附："><a href="#附：" class="headerlink" title="附："></a>附：</h2><p>在第一次向远程提交（即：git push -u origin master）时遇到以下问题：<br><img src="http://jpc2018.xyz/Snip20190218_33.png" alt="Snip20190218_33"><br>1）解决方案：<br>（1）通过：git status 查看状态<br><img src="http://jpc2018.xyz/Snip20190218_35.png" alt="Snip20190218_35"><br>（2）通过：git mergetool 进行合并<br><img src="http://jpc2018.xyz/Snip20190218_36.png" alt="Snip20190218_36"><br>（3）合并后再提交就OK了，具体看下3.4。<br><a href=""></a></p>
 
           
         
